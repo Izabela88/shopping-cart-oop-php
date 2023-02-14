@@ -21,10 +21,21 @@ class Cart
      * @param int $quantity
      * @return CartItem
      */
-    public function addProduct(Product $product, int $quantity): CartItem
+    public function addProduct(Product $product, int $quantity)
     {
-        //TODO Implement method
-        $cartItem = new CartItem($product, $quantity);
+        // find product in cart
+        $cartItem = $this->findCartItem($product->getId());
+        if ($cartItem === null) {
+            $cartItem = new CartItem($product, 0);
+            $this->items[$product->getId()] = $cartItem;
+        }
+        $cartItem->increaseQuantity($quantity);
+        return $cartItem;
+    }
+
+    private function findCartItem(int $productId)
+    {
+        return $this->items[$productId] ?? null;
     }
 
     /**
