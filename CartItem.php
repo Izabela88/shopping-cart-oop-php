@@ -34,15 +34,23 @@ class CartItem
         $this->$quantity = $quantity;
     }
 
-    public function increaseQuantity()
+    public function increaseQuantity($amount = 1)
     {
         //TODO $quantity must be increased by one.
         // Bonus: $quantity must not become more than whatever is Product::$availableQuantity
+        if ($this->getQuantity() + $amount > $this->getProduct()->getAvailableQuantity()) {
+            throw new Exception("Product quantity can not be more than " . $this->getProduct()->getAvailableQuantity());
+        }
+        $this->quantity += $amount;
     }
 
-    public function decreaseQuantity()
+    public function decreaseQuantity($amount = 1)
     {
         //TODO $quantity must be increased by one.
         // Bonus: Quantity must not become less than 1
+        if ($this->getQuantity() - $amount < 1) {
+            throw new Exception("Product quantity can not be less than 1");
+        }
+        $this->quantity -= $amount;
     }
 }
