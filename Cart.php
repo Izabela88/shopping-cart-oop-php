@@ -24,6 +24,7 @@ class Cart
     public function addProduct(Product $product, int $quantity): CartItem
     {
         //TODO Implement method
+        $cartItem = new CartItem($product, $quantity);
     }
 
     /**
