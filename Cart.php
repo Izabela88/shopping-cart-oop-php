@@ -53,9 +53,13 @@ class Cart
      *
      * @return int
      */
-    public function getTotalQuantity(): int
+    public function getTotalQuantity()
     {
-        //TODO Implement method
+        $sum = 0;
+        foreach ($this->items as $item) {
+            $sum += $item->getQuantity();
+        }
+        return $sum;
     }
 
     /**
