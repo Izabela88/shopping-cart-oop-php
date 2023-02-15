@@ -67,8 +67,13 @@ class Cart
      *
      * @return float
      */
-    public function getTotalSum(): float
+    public function getTotalSum()
     {
-        //TODO Implement method
+        $totalSum = 0;
+        foreach ($this->items as $item) {
+            $totalSum += $item->getQuantity() * $item->getProduct()->getPrice();
+        }
+
+        return $totalSum;
     }
 }
