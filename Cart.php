@@ -45,7 +45,7 @@ class Cart
      */
     public function removeProduct(Product $product)
     {
-        //TODO Implement method
+        unset($this->items[$product->getId()]);
     }
 
     /**
