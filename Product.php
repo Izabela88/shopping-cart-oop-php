@@ -83,6 +83,6 @@ class Product
      */
     public function removeFromCart(Cart $cart)
     {
-        //TODO Implement method
+        return $cart->removeProduct($this);
     }
 }
